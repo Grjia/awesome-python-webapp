@@ -1,0 +1,22 @@
+Status 返回状态码：
+    0   成功
+    1   接口地址不存在404
+    2   粒度(type)字段不匹配
+    3   时间段无效 
+粒度与时间段对应关系：
+    15(分钟)      查询时间段间隔不超过6小时(time_end - time_start)
+    60(1小时)     查询时间段间隔不超过24小时(time_end - time_start)
+    1440(1天)     查询时间段间隔不超过30天(time_end - time_start)                       
+1、地市与region_id对应接口
+地址:/city    
+POST参数：city all/成都/绵阳...  (all表示所有)
+返回结果：status 状态,fields 数据字段名,data 数据
+2、激活成功率接口
+（1）单个apn查询
+地址：/rate    
+POST参数：type 粒度(15,60,1440),region_id 区域id(1接口查询结果数据),apn,time_start 开始时间(查询时间段开始时间，查询时间点不要) time_end 结束时间(时间点或查询时间段结束时间)
+返回结果：status 状态,city 地市,fields 数据字段名,data 数据
+（2）地区激活成功率top几或bottom几
+地址：/rate/sort    
+参数：type 粒度(15,60,1440),region_id 区域id(1接口查询结果数据),time_end 结束时间(时间点),sort 前或后(DESC/ASC),num 个数(0表示所有)
+返回结果：status 状态,city 地市,fields 数据字段名,data 数据
