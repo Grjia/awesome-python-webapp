@@ -3,6 +3,7 @@ Status 返回状态码：
     1   接口地址不存在404
     2   粒度(type)字段不匹配
     3   时间段无效 
+    2   参数错误
 粒度与时间段对应关系：
     15(分钟)      查询时间段间隔不超过6小时(time_end - time_start)
     60(1小时)     查询时间段间隔不超过24小时(time_end - time_start)
@@ -18,5 +19,6 @@ POST参数：type 粒度(15,60,1440),region_id 区域id(1接口查询结果数�
 返回结果：status 状态,city 地市,fields 数据字段名,data 数据
 （2）地区激活成功率top几或bottom几
 地址：/rate/sort    
-参数：type 粒度(15,60,1440),region_id 区域id(1接口查询结果数据),time_end 结束时间(时间点),sort 前或后(DESC/ASC),num 个数(0表示所有)
+POST参数：type 粒度(15,60,1440),region_id 区域id(1接口查询结果数据),time_end 结束时间(时间点),sort 前或后(DESC/ASC),num 个数(0表示所有)
 返回结果：status 状态,city 地市,fields 数据字段名,data 数据
+3、
